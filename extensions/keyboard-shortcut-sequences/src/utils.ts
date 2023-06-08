@@ -12,7 +12,11 @@ export const runShortcutSequence = async (sequence: Sequence) => {
                   shortcut.keystrokes.includes("ASCII character")
                     ? `(${shortcut.keystrokes})`
                     : `"${shortcut.keystrokes}"`
-                } using ${shortcut.modifiers.length > 1 ? `[${shortcut.modifiers.join(", ")}]` : shortcut.modifiers[0]}
+                } ${
+                  shortcuts.modifiers.length > 0 
+                    ? `using ${shortcut.modifiers.length > 1 ? `[${shortcut.modifiers.join(", ")}]` : shortcut.modifiers[0]}`
+                    : ''
+                }
             end tell
         end tell`);
   });
